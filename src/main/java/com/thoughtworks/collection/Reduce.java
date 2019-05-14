@@ -105,25 +105,19 @@ public class Reduce {
         return true;
     }
 
-    public Double getMedianInLinkList(SingleLink singleLink) {
+    public Double getMedianInLinkList(SingleLink<Integer> singleLink) {
 //        throw new NotImplementedException();
         Double result;
-//        int nodeNum = 0;
-//        for (int i = 1;;i++){
-//            if (singleLink.getNode(i) != null){
-//                nodeNum += 1;
-//            }
-//            else {
-//                break;
-//            }
-//        }
+        for (Integer integer : this.arrayList) {
+            singleLink.addTailPointer(integer);
+        }
 
         int medianIndex = this.arrayList.size()/2;
         if(arrayList.size()%2 == 0){
-            result = (this.arrayList.get(medianIndex-1)+this.arrayList.get(medianIndex))/2.0;
+            result = (singleLink.getNode(medianIndex)+singleLink.getNode(medianIndex+1))/2.0;
         }
         else {
-            result = this.arrayList.get(medianIndex)*1.0;
+            result = singleLink.getNode(medianIndex+1)*1.0;
         }
         return result;
     }
